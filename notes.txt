@@ -1,0 +1,75 @@
+Perfomr CRUDE operations on relational databses using SQLite.
+manipulationg and select data from SQL database tables.
+ 
+SETTING UP OUR DATABASE.
+Creating a database run the following command 
+ sqlite3 pets-database.db 
+.table to check the tables in this database.
+.schema to check the structure of the tables listed when we run .tables command in the terminal.
+
+INSERT INTO
+
+run the following command in sqlite3
+    -> INSERT INTO cats (name, age, breed) VALUES ( 'Mary', 3, 'Scottish Fold');
+
+-> we use the INSERT INTO commands Followed by the name of the table to which we want to add data.
+then in the parenthesis, we put the column names that we will be fillifn with data.
+this is followed byt he VALUES  keyword which is accompanied by a parenthesis enclosed list of the values that corresponds to each column name.
+NOTE that we did not specify the id co,lumn name or value.
+since we created the cats table with na id column whose type is INTEGER PRIMARY KEY we dont have to specify the id columns
+values when we insert data. primary columns are auto-increamenting as ling as ou hve defined an id column with a data type
+of  INTEGER PRIMARY KEY a newly inserted rows id column will be automatically given the correct value.
+
+
+SELECTING DATA 
+
+Select From 
+the basic SELECT statement works like this:
+    SELECT [names of columns we are going to select] FROM [table we are selecting from];
+
+WE WANT to select all the rows in out table and we want to return the data stored in any and all columns in those rows.
+to do this, we could pass the name of each column explicitly.
+    additional info-->to open the database using the sqlite3 CLI  and run the SQL commands from the teminal. 
+     run this command line to open the database.
+        sqlite3 pets_database.db
+
+run the cammand from sqlite prompt in your terminal or in DBbrowser
+    SELECT id, name, age, breed FROM cats
+
+SELECTING BY COLUMN names
+to select just certain columns from the table use the following    
+    SELECT name , age FROM cats;
+
+name if you have duplicate data (for example if two cts ahve the same name) and youw ant to select unique values, you can use the DISTINCT keyword 
+     SELECT DISTINCT name FROM cats;
+
+Selecting based on conditions: the where Clause 
+-> when we want to retireve a specific table row, for example a cat with the name Maru, or all cats with the age below 
+2 years old, we use the WHERE keyword to select data based on specific conditions.
+
+    SELECT * FROM [table name] WHERE [column name] = [some value];
+    SELECT * FROM cats WHERE name = ' Maru';
+
+we can also use comparison operators, like < or > to select specific data. 
+    SELECT * FROM cats WHERE age < 2
+
+
+UPDATING DATA.
+
+Update.
+an update statement looks like this :
+     UPDATE[table name] SET [column name] = [new value] WHERE [column name] = [value];
+Update statement uses a where clause to grab the row you wnat to update.
+it identified the table name you are looking in and resets the data in particular column to a new value.
+example of updting one of our cats.
+change Hannah's name to hana 
+     UPDATE cats SET name = 'Hana' WHERE name = 'Hannah';
+
+
+DELETING DATA
+DELETE
+the delete statements :
+    DELETE FROM [table name] WHERE [column name] = [value];
+    DELETE FROM cats WHERE id = 3;
+    notice that when deleting a row we select the row using the primary key column.
+    every row has promary keycolumn that is unique, hanna was the third row in the databse and thus had an id of 3.
